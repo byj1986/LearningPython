@@ -1,0 +1,2 @@
+# LearningPython
+Self-learning purpose
