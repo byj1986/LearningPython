@@ -28,7 +28,7 @@ class TestIter(object):
 
     def next(self):
         self.value += 1
-        if self.value > 10:
+        if self.value > 5:
             raise StopIteration
         return self.value
 
@@ -43,8 +43,14 @@ class TestIter(object):
 # ti.next()
 # ti.next()
 
+# StopIteration will not be raise out side in for iteration
+
 ti = TestIter()
 print list(ti)
+
+# print ti.next()
+# will get a StopIteration
+
 
 # a = [1, 2, 3, 4]
 # # print type(a)
