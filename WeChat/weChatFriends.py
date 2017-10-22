@@ -4,6 +4,10 @@ import json
 
 import itchat
 
+# add below print to list where files
+print json.__file__
+print itchat.__file__
+
 
 def update_dict_count(data, key):
     if data.has_key(key):
