@@ -17,8 +17,8 @@ from SubItems import Tax
 #     print("Pre-tax: " + str(salary) + " Net salary: " + str(round(payTax - tax, 2)))
 
 
-salary = 22680
-deduction = 0000
+salary = 30000
+deduction = 3000
 
 pension = Pension.pension(salary)
 medical = Medical.medical(salary)
