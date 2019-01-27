@@ -30,9 +30,10 @@ from DecoratorCore import *
 #
 @log
 def now():
-    print '2013-12-25'
+    # print('2013-12-25')
+    DecoratorCore.hello()
 
 
 now()
 
-# print log('2222',now)
+

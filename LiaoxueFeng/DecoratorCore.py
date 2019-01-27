@@ -6,7 +6,7 @@
 
 # 似乎装饰器的名称必须唯一，不能重载
 def log(func):
-    print 'call %s():' % func.__name__
+    print('call %s():' % func.__name__)
 
     def wrapper(*args, **kw):
         return func(*args, **kw)
@@ -17,7 +17,7 @@ def log(func):
 def log2(text):
     def decorator(func):
         def wrapper(*args, **kw):
-            print '%s %s():' % (text, func.__name__)
+            print('%s %s():' % (text, func.__name__))
             return func
 
         return wrapper
@@ -27,7 +27,11 @@ def log2(text):
 
 def log3(text, func):
     def wrapper(*args, **kw):
-        print '%s %s():' % (text, func.__name__)
+        print('%s %s():' % (text, func.__name__))
         return func
 
     return wrapper
+
+
+def hello():
+    print("123444")

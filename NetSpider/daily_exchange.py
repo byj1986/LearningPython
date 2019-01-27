@@ -4,7 +4,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-
+# pip install -i http://pypi.douban.com/simple/ --trusted-host pypi.douban.com pakegename
 data_url = r'http://www.boc.cn/sourcedb/whpj/index.html'
 response_success_flag = '#DefaultMain'
 
@@ -54,6 +54,8 @@ def get_exchange_data():
 
 
 def get_currency_amount(currency_result, source_amount, currency_name):
+    # 现钞购入价等于汇率*100
+    # 所以计算的时候也*100
     return (float(source_amount) / float(currency_result[currency_name])) * 100.0
 
 
