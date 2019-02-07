@@ -21,10 +21,9 @@ def calcSalary(salary, deduction=0):
 
 
 if __name__ == '__main__':
-    paySalaries = [5000, 8000, 10000, 15000, 20000, 25000, 30000, 50000, 80000, 100000]
+    paySalaries = [5000, 8000, 10000, 15000, 20000, 22680, 25000, 30000, 50000, 80000, 100000]
 
     for salary in paySalaries:
         result = calcSalary(salary, 2000)
-        print("Deduction save you " + str(result[0]) + " per month.")
-        print("Pre-tax: " + str(salary) + " Net salary: " + str(result[1]))
-        print()
+        print("Deduction save you " + str(result[0]) + " per month.Pre-tax: " + str(salary) +
+              " Net salary: " + str(result[1]))
