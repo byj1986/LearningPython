@@ -2,7 +2,12 @@
 from consts import *
 
 
-def house(salary):
+def house(salary) -> float:
+    """ calculate house funding
+
+    :param salary: gross salary
+    :return: house funding amount
+    """
     if salary > HouseUpperLimit:
         result = HouseUpperLimit * HouseRate
     elif salary < HouseLowerLimit:

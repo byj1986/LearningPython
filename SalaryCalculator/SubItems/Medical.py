@@ -1,7 +1,12 @@
 from consts import *
 
 
-def medical(salary):
+def medical(salary) -> float:
+    """ calculate medical insurance
+
+    :param salary: gross salary
+    :return: medical insurance amount
+    """
     if salary > SocialUpperLimit:
         result = SocialUpperLimit * MedicalRate
     elif salary < SocialLowerLimit:

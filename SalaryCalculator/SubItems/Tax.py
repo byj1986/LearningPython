@@ -1,11 +1,17 @@
 from consts import *
 
 
-def tax(salary, deduction=0):
-    taxPart = salary - TaxThreshold - deduction
+def tax(after_decution_salary: float, exempt=0) -> float:
+    """ calculate tax
+
+    :param after_decution_salary: after deduction salary
+    :param exempt: tax exempt
+    :return: medical insurance amount
+    """
+    pay_tax_part = after_decution_salary - TaxThreshold - exempt
     for taxLevel in TaxLevelsDict:
-        if taxLevel["upper"] > taxPart:
-            return taxPart * taxLevel["rates"] - taxLevel["quickNumber"]
+        if taxLevel["upper"] > pay_tax_part:
+            return pay_tax_part * taxLevel["rates"] - taxLevel["quickNumber"]
 
 
 if __name__ == '__main__':
