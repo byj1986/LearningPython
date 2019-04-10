@@ -1,5 +1,8 @@
 # coding=utf-8
 
+# 最低工资
+MinimumSalary = 2480
+
 # 社保上限
 SocialUpperLimit = 21396
 # 下限

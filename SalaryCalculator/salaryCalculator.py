@@ -15,6 +15,8 @@ def calculate(gross: float, exempt=0) -> []:
     :param exempt: tax exempt
     :return: calculate result set
     """
+    if gross < MinimumSalary:
+        raise ValueError('Gross salary is less local minimum salary!')
     _pension = pension(gross)
     _unemployment = unemployment(gross)
     _medical = medical(gross)
@@ -28,17 +30,18 @@ def calculate(gross: float, exempt=0) -> []:
 
 
 if __name__ == '__main__':
-    grossSalaries = [5000, 8000, 10000, 15000, 20000, 25000, 30000, 50000, 80000, 100000]
+    grossSalaries = [2000, 5000, 8000, 10000, 15000, 20000, 25000, 30000, 50000, 80000, 100000]
     for salary in grossSalaries:
-        result = calculate(salary, 2000)
-        print("-------------------------")
-        print("Gross salary: " + str(salary))
-        print("Pension:      " + str(result[0]))
-        print("Unemployment: " + str(result[1]))
-        print("Medical:      " + str(result[2]))
-        print("House:        " + str(result[3]))
-        print("Tax exempt:   " + str(result[4]))
-        print("Net salary:   " + str(result[5]))
-        print("-------------------------")
-        # print("Deduction save you " + str(result[0]) + " per month.Pre-tax: " + str(salary) +
-        #       " Net salary: " + str(result[1]))
+        try:
+            result = calculate(salary, 2000)
+            print("-------------------------")
+            print("Gross salary: " + str(salary))
+            print("Pension:      " + str(result[0]))
+            print("Unemployment: " + str(result[1]))
+            print("Medical:      " + str(result[2]))
+            print("House:        " + str(result[3]))
+            print("Tax exempt:   " + str(result[4]))
+            print("Net salary:   " + str(result[5]))
+            print("-------------------------")
+        except ValueError as e:
+            print(e)
