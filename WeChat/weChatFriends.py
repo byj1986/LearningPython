@@ -5,12 +5,14 @@ import json
 import itchat
 
 # add below print to list where files
-print json.__file__
-print itchat.__file__
+print
+json.__file__
+print
+itchat.__file__
 
 
 def update_dict_count(data, key):
-    if data.has_key(key):
+    if key in data.keys():
         data[key] += 1
     else:
         data[key] = 1
@@ -25,6 +27,11 @@ def get_display_sex(s):
         return "Other"
 
 
+def get_sorted_items(unsorted_items):
+    sorted(unsorted_items.items(), key=lambda x: x[1], reverse=True)
+    return json.dumps(unsorted_items).encode('utf-8').decode('unicode-escape')
+
+
 itchat.login()
 friends = itchat.get_friends(update=True)[0:]
 sortedFriends = sorted(friends, key=lambda obj: obj["NickName"])
@@ -33,6 +40,7 @@ provinces = {}
 cities = {}
 
 for i in sortedFriends[0:]:
+    print(i)
     signature = i["Signature"].strip().replace("span", "").replace("class", "").replace("emoji", "")
     province = i["Province"].replace("\n", "")
     city = i["City"].replace("\n", "")
@@ -49,7 +57,7 @@ for i in sortedFriends[0:]:
     if signature:
         display += (" Signature: " + signature)
 
-    print display.encode('utf8')
+    print(display.encode('utf8'))
     sex = i["Sex"]
     if sex == 1:
         male += 1
@@ -59,8 +67,8 @@ for i in sortedFriends[0:]:
         other += 1
 total = len(friends[1:])
 
-print json.dumps(sorted(provinces.iteritems(), key=lambda x: x[1], reverse=True)).decode('unicode-escape')
-print json.dumps(sorted(cities.iteritems(), key=lambda x: x[1], reverse=True)).decode('unicode-escape')
+print(get_sorted_items(provinces))
+print(get_sorted_items(cities))
 
 print("男性好友： %d人, 占%.2f%%" % (male, (float(male) / total * 100)))
 print("女性好友： %d人, 占%.2f%%" % (female, (float(female) / total * 100)))
