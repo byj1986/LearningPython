@@ -6,10 +6,11 @@ import lxml.html
 import requests
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.ui import WebDriverWait
 
-init_data_url = r'http://cl.liruqi.info/thread0806.php?fid=15'
+# init_data_url = r'http://cl.liruqi.info/thread0806.php?fid=15'
+init_data_url = r'https://cl.rvlev.com/thread0806.php?fid=15'
 page_url = r'&search=&page='
 response_success_flag = '#ajaxtable'
 browser = webdriver.Firefox()
@@ -18,19 +19,19 @@ wait = WebDriverWait(browser, 1000)
 # 窗体大小1920, 1080
 browser.set_window_size(1920, 1080)
 
-film_name_pattern = re.compile(r'\w{2,4}-?\d{3,5}')
+film_name_pattern = re.compile(r'\w{2,6}-?\d{3,5}')
 img_postfix_pattern = re.compile(r'(jpg|jpeg|JPG|JPEG)$')
 
 
 def parser(url, param):
-    '''
+    """
     请求url, 根据返回的html解析为一个doc
     :param url: 请求的url
     :param param: 代表返回成功的标志
     :return: a single element/document
-    '''
+    """
     browser.get(url)
-    wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, param)))
+    wait.until(ec.presence_of_element_located((By.CSS_SELECTOR, param)))
     html = browser.page_source
     doc = lxml.html.fromstring(html)
     return doc
@@ -54,9 +55,12 @@ def get_porn_images(request_url, page_number):
                 img_name = film_name_pattern.search(subject_raw.text).group()
                 if img_name is not None:
                     hyper_link = subject_raw.get('href')
-                    new_url = 'http://cl.liruqi.info/' + hyper_link
+                    new_url = 'https://cl.rvlev.com/' + hyper_link
                     inner_doc = parser(new_url, '#main')
-                    image_urls = inner_doc.xpath('//*[@class="tpc_content do_not_catch"]/img/@src')
+                    image_urls = inner_doc.xpath('//*[@class="tpc_content do_not_catch"]/img/@data-link')
+                    if image_urls is None:
+                        image_urls = inner_doc.xpath('//*[@class="tpc_content do_not_catch"]/img/@data-src')
+
                     for image_url in image_urls:
                         if img_postfix_pattern.search(image_url):
                             print('正在下载第' + str(inner_index) + '张, 名称' + img_name + ' 地址：' + image_url)
@@ -68,12 +72,12 @@ def get_porn_images(request_url, page_number):
 
 
 def save_image(image_url, page_number, file_name):
-    '''
+    """
     :param image_url:
     :param page_number:
     :param file_name:
     :return:
-    '''
+    """
     try:
         folder_name = str('image\\' + str(page_number))
         if not os.path.exists(folder_name):
