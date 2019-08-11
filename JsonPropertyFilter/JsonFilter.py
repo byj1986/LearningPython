@@ -1,13 +1,9 @@
 import json
 import sys
 
-
-def resolve_json(filepath):
-    file = open(filepath, "rb")
-    return json.load(file)
-
-
 if __name__ == '__main__':
-    result = [obj for obj in resolve_json(sys.argv[1]) if eval(sys.argv[2])]
+    # "C:\\Codes\\Python\\LearningPython\\JsonPropertyFilter\\SampleData.json"
+    # "obj['Gender']== 'Male' or (obj['Age']>=30 and obj['Married'] == True)"
+    result = [obj for obj in json.load(open(sys.argv[1], 'rb')) if eval(sys.argv[2])]
     for x in result:
         print(x)
