@@ -5,41 +5,73 @@
     "Gender": "Male",
     "Job": "Engineer",
     "Married": false,
-    "Nationality": "Chinese"
-  }, {
+    "Nationality": "Chinese",
+    "Children": [
+      {
+        "name": "child1"
+      },
+      {
+        "name": "child2"
+      }
+    ]
+  },
+  {
     "name": "Fake2",
     "Age": 30,
     "Gender": "Female",
     "Job": "Manager",
     "Married": true,
-    "Nationality": "Japanese"
-  }, {
+    "Nationality": "Japanese",
+    "Children": [
+      {
+        "name": "child3"
+      },
+      {
+        "name": "child4"
+      }
+    ]
+  },
+  {
     "name": "Fake3",
     "Age": 40,
     "Gender": "Female",
     "Job": "Manager",
     "Married": false,
-    "Nationality": "American"
-  }, {
+    "Nationality": "American",
+    "Children": [
+      {
+        "name": "child5"
+      },
+      {
+        "name": "child6"
+      }
+    ]
+  },
+  {
     "name": "Fake4",
     "Age": 50,
     "Gender": "Female",
     "Job": "Support",
     "Married": false,
-    "Nationality": "Canadian"
-  }, {
+    "Nationality": "Canadian",
+    "Children": []
+  },
+  {
     "name": "Fake5",
     "Age": 60,
     "Gender": "Male",
     "Job": "Support",
     "Married": true,
-    "Nationality": "Australian"
-  }, {
+    "Nationality": "Australian",
+    "Children": []
+  },
+  {
     "name": "Fake6",
     "Age": 70,
     "Gender": "Male",
     "Job": "Developer",
     "Married": false,
-    "Nationality": "French"
+    "Nationality": "French",
+    "Children": []
   }
 ]
