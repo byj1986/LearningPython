@@ -4,9 +4,9 @@
 MinimumSalary = 2480
 
 # 社保上限
-SocialUpperLimit = 21396
+SocialUpperLimit = 24633
 # 下限
-SocialLowerLimit = 4279
+SocialLowerLimit = 4927
 
 # 养老保险
 PensionRate = 0.08
@@ -20,9 +20,9 @@ UnemploymentRate = 0.005
 # 公积金缴纳比例
 HouseRate = 0.07
 # 上限
-HouseUpperLimit = 21400
+HouseUpperLimit = 23496
 # 下限
-HouseLowerLimit = 2300
+HouseLowerLimit = 2420
 
 # 个税起征点
 TaxThreshold = 5000
