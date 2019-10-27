@@ -4,29 +4,29 @@ import sys
 
 # from copy import *
 
-print copy
+print(copy)
 
-print type(copy)
+print(type(copy))
 
-print dir(copy)
+print(dir(copy))
 
-print [n for n in dir(copy) if not n.startswith('_')]
+print([n for n in dir(copy) if not n.startswith('_')])
 # it's inside the copy.py file
 
-print copy.__all__
+print(copy.__all__)
 
-# print copy.Error
+# print(copy.Error
 
 # for n in copy.__all__:
-#     print n
+#     print(n
 
 # help(copy)
 
-print copy.copy.__doc__
+print(copy.copy.__doc__)
 
-print range.__doc__
+print(range.__doc__)
 
-print copy.__file__
+print(copy.__file__)
 
 if __name__ == '__main__':
     pprint.pprint(sys.modules)

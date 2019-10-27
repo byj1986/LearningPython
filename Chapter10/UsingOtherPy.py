@@ -12,7 +12,6 @@ hello = reload(hello)
 
 hello2.hello()
 
-print 'hello3.__name__', hello3.__name__
-
+print('hello3.__name__', hello3.__name__)
 
 hello4

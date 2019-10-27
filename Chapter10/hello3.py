@@ -1,8 +1,7 @@
 def hello():
-    print "Hello World3"
+    print("Hello World3")
 
 
 hello()
 
-print __name__
-
+print(__name__)

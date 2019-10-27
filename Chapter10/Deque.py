@@ -3,20 +3,20 @@
 from collections import deque
 
 q = deque(range(5))
-print q
+print(q)
 q.append(5)
-print q
+print(q)
 q.appendleft(6)
-print q
+print(q)
 
-print q.pop()
+print(q.pop())
 
-print q.popleft()
+print(q.popleft())
 
 print
-print q
+print(q)
 q.rotate(3)
-print q
+print(q)
 
 q.rotate(-1)
-print q
+print(q)
