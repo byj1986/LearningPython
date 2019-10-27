@@ -5,12 +5,12 @@ import re
 pattern = r'^\d{3}\-\d{3,8}$'
 s = '010-12345'
 match = re.match(pattern, s)
-print match
+print(match)
 s = s.replace('-', ' ')
 match = re.match(pattern, s)
-print match
+print(match)
 
 s = 'a b  c'
 
 match = re.split(r'\s+', s)
-print match
+print(match)

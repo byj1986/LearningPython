@@ -3,26 +3,26 @@
 # 中文
 import os
 
-print os.name
+print(os.name)
 
 # 注意uname()函数在Windows上不提供，也就是说，os模块的某些函数是跟操作系统相关的。
 
-# print os.uname()
+# print(os.uname())
 # 解析Path
-# print os.getenv('PATH')
+# print(os.getenv('PATH'))
 
 # d = os.environ
-# print type(d)
+# print(type(d))
 
-# print os.getcwd()
+# print(os.getcwd())
 
-# print os.path.join("C:\\", "IDE")
+# print(os.path.join("C:\\", "IDE"))
 #
 # fromFolder = os.path.join("C:\\", "IDE")
 # fromName = os.path.join(fromFolder, "test.txt")
 #
 # toName = os.path.join(fromFolder, "test.py")
-# print fromName
+# print(fromName)
 # os.rename(fromName, toName)
 
 #
@@ -32,11 +32,11 @@ print os.name
 # shutil.copyfile(toName, distFileName)
 
 # os.remove('test.py')
-print  os.listdir('.')
+print(os.listdir('.'))
 
-print [x for x in os.listdir('.') if os.path.isdir(x)]
+print([x for x in os.listdir('.') if os.path.isdir(x)])
 
-print [x for x in os.listdir('.') if os.path.isfile(x) and os.path.splitext(x)[1] == '.py']
+print([x for x in os.listdir('.') if os.path.isfile(x) and os.path.splitext(x)[1] == '.py'])
 
 # 练习：编写一个search(s)的函数，能在当前目录以及当前目录的所有子目录下查找文件名包含指定字符串的文件，并打印出完整路径：
 # TODO
