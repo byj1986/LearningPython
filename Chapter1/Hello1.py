@@ -23,7 +23,7 @@ else:
     print("l not equals 1")
 today = datetime.date.today()
 
-datetime.
+# datetime.
 future = today + datetime.timedelta(days=31)
 print(future)
 # from__future__ import division

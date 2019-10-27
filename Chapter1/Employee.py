@@ -15,16 +15,16 @@ class Employee:
         self.age = age
 
     def sayHello(self):
-        print 'Hello' + self.name
+        print('Hello' + self.name)
 
     @staticmethod
     def printMethod():
-        print "Helloworld"
+        print("Helloworld")
 
 
 class Manager(Employee):
     def sayHello(self):
-        print "Hello from Manager: " + self.name
+        print("Hello from Manager: " + self.name)
 
 
 class Person(Employee):
