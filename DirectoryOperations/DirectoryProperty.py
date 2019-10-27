@@ -24,7 +24,10 @@ def subFolderSize(sub):
 
 if __name__ == '__main__':
     path = r'D:\迅雷下载'
-    # for directory in filterSubFolders(path, 'subFolderSize(root) < MinimumSize'):
-    #     print(directory)
+
+    for directory in filterSubFolders(path, 'subFolderSize(root) < MinimumSize'):
+        print(directory)
+
+    print('--------------------------------------------------------------------------------')
     for directory in filterSubFolders(path, 'subFolderSize(root) > MaximumSize'):
         print(directory)
