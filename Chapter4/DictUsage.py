@@ -5,7 +5,7 @@ people = {
 }
 
 # print people
-print "Cecil's phone number is %(Cecil)s." % people
+print("Cecil's phone number is %(Cecil)s." % people)
 
 # request = raw_input('Phone (p) or address (a): ')
 
@@ -21,15 +21,15 @@ req = 'phone'
 name = 'Beth'
 
 if name in people:
-    print type(people[name])
-    print "%s's %s is %s" % (name, req, people[name][req])
+    print(type(people[name]))
+    print("%s's %s is %s" % (name, req, people[name][req]))
 
 x = {'username': 'admin', 'machines': ['foo', 'bar', 'baz']}
 y = x.copy()
 x['username'] = 'mlh'
 x['machines'].remove('baz')
 
-print 'x: ', x
-print 'y: ', y
+print('x: ', x)
+print('y: ', y)
 
-print x.get('ipaddress', '127.0.0.1')
+print(x.get('ipaddress', '127.0.0.1'))

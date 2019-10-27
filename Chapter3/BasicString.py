@@ -6,7 +6,7 @@ print(format % values)
 format = "Pi with three decimals: %.5f"
 from math import pi
 
-print pi
+print(pi)
 
 print(format % pi)
 
@@ -31,15 +31,15 @@ print(s)
 
 print('%s plus %s equals %s' % (1, 1, 2))
 
-# print '%s plus %s equals %s' % 1, 1, 2
+# print('%s plus %s equals %s' % 1, 1, 2)
 
 # pricelist
 
-# print string.letters
+# print(string.letters)
 
 # join and split
 seq = ['', 'usr', 'bin', 'env']
-print '\\'.join(seq)
+print('\\'.join(seq))
 
 print
 
