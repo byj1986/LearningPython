@@ -6,7 +6,7 @@
 #
 # try_to_change(name)
 #
-# print name
+# print(name)
 #
 #
 # def change(n):
@@ -17,7 +17,7 @@
 #
 # change(names)
 #
-# print names
+# print(names)
 
 me = 'Magnus Lie Hetland'
 
@@ -58,25 +58,25 @@ store(storage, my_sister)
 # storage['middle'].setdefault('Lie', []).append(my_sister)
 # storage['last'].setdefault('Hetland', []).append(my_sister)
 
-print storage
-print storage['first']['Anne']
-print storage['middle']['Lie']
+print(storage)
+print(storage['first']['Anne'])
+print(storage['middle']['Lie'])
 
 # init(mysister)
 
-# print storage['first']['Magnus']
+# print(storage['first']['Magnus'])
 
-print lookup(storage, 'middle', 'Lie')
+print(lookup(storage, 'middle', 'Lie'))
 
 store(storage, 'Mr Gumby')
 
 
 def hello_1(greeting, name):
-    print '%s, %s!' % (greeting, name)
+    print('%s, %s!' % (greeting, name))
 
 
 def hello_2(name, greeting):
-    print '%s, %s!' % (name, greeting)
+    print('%s, %s!' % (name, greeting))
 
 
 hello_1('Hello', 'World')

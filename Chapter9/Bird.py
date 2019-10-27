@@ -8,10 +8,10 @@ class Bird:
 
     def eat(self):
         if self.hungry:
-            print 'Ahhhh...'
+            print('Ahhhh...')
             self.hungry = False
         else:
-            print 'No, thanks'
+            print('No, thanks')
 
 
 class SongBird(Bird):
@@ -21,7 +21,7 @@ class SongBird(Bird):
         self.sound = "Squawk"
 
     def sing(self):
-        print self.sound
+        print(self.sound)
 
 
 sb = SongBird()

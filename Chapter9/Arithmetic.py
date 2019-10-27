@@ -24,11 +24,11 @@ class ArithmeticSequence:
 
 
 a = ArithmeticSequence(1, 2)
-print a[4]
+print(a[4])
 
 a[4] = 2
-print a[4]
+print(a[4])
 
-print a[5]
+print(a[5])
 
 # del a[4]

@@ -9,15 +9,15 @@ class CounterList(list):
 
 
 cl = CounterList(range(10))
-print cl
-print cl.reverse()
+print(cl)
+print(cl.reverse())
 
 del cl[3:6]
 
-print cl
+print(cl)
 
-print cl.counter
+print(cl.counter)
 
-print cl[4] + cl[2]
+print(cl[4] + cl[2])
 
-print cl.counter
+print(cl.counter)

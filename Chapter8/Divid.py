@@ -11,9 +11,9 @@
 x = None
 try:
     1 / x
-except (ZeroDivisionError, TypeError), e:
-    print e.message
+except (ZeroDivisionError, TypeError) as e:
+    print(e.message)
     pass
 finally:
     del x
-    print 'Cleanup'
+    print('Cleanup')

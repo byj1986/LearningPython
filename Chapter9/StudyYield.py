@@ -14,40 +14,40 @@ def fab(max):
         n = n + 1
 
 
-print type(fab(2))
+print(type(fab(2)))
 
 # 在for循环里，无需处理StopIteration异常，循环会正常结束。
 for i in fab(5):
-    print i
+    print()
 
-# print fab(5).next()
+# print(fab(5).next()
 
 f = fab(15)
 f2 = fab(10)
 f3 = fab(5)
-print id(f), id(f2), id(f3)
+print(id(f), id(f2), id(f3))
 
 # 在这样的for循环中，还是要处理StopIteration异常
 try:
     for i in range(1, 30):
-        print f.next()
-except StopIteration, e:
+        print(f.next())
+except StopIteration as e:
     pass
-    # print e.message
+    # print(e.message)
 
 f4 = fab(20)
-print id(f4)
+print(id(f4))
 
-print id(fab(12)), id(fab(2))
+print(id(fab(12)), id(fab(2)))
 
-print 'isgeneratorfunction'
-print isgeneratorfunction(fab)
-print isgeneratorfunction(f)
+print('isgeneratorfunction')
+print(isgeneratorfunction(fab))
+print(isgeneratorfunction(f))
 
-print 'isinstance of GeneratorType'
-print isinstance(fab, types.GeneratorType)
-print isinstance(f, types.GeneratorType)
+print('isinstance of GeneratorType')
+print(isinstance(fab, types.GeneratorType))
+print(isinstance(f, types.GeneratorType))
 
-print 'isinstance of Iterable'
-print isinstance(fab, Iterable)
-print isinstance(fab(5), Iterable)
+print('isinstance of Iterable')
+print(isinstance(fab, Iterable))
+print(isinstance(fab(5), Iterable))

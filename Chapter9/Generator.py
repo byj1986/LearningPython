@@ -1,5 +1,5 @@
 nested = [[1, 2], [3, 4], [5]]
-print nested
+print(nested)
 
 
 def flatten(n):
@@ -9,10 +9,10 @@ def flatten(n):
 
 
 fla = flatten(nested)
-print type(fla)
+print(type(fla))
 
 for num in fla:
-    print num
+    print(num)
 
 
 # fla.next()
@@ -26,10 +26,10 @@ def flatten2(n):
         yield n
 
 
-print 'flatten2'
+print('flatten2')
 fla2 = flatten2(nested)
 for num in fla2:
-    print num
+    print(num)
 
 
 def flatten3(n):
@@ -50,40 +50,40 @@ def flatten3(n):
 
 fla3 = flatten3(['abcd', ['ef', ['g']]])
 
-# print fla3.next()
+# print(fla3.next())
 for a in fla3:
-    print a
+    print(a)
 
 
 def simple_generator():
     yield 1
 
 
-print simple_generator()
-print simple_generator
+print(simple_generator())
+print(simple_generator)
 
 
 def repeater(val):
     '''below print just executed once'''
     '''cause after first execution of next(), it execute statement after yield'''
-    print 'repeater'
+    print('repeater')
     while True:
-        print 'repeater while'
+        print('repeater while')
         new = (yield val)
         if new is not None: val = new
 
 
 r = repeater(42)
-print r.next()
-print r.send("Hello world")
-print r.send("Hello world")
+print(r.next())
+print(r.send("Hello world"))
+print(r.send("Hello world"))
 
 r.close()
 # can't send or next after close
 # r.send("Hello world2")
 
 del r
-print r
+print(r)
 
 
 def flatten4(n):

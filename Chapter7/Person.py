@@ -2,7 +2,7 @@ __metaclass__ = type
 
 
 class Person:
-    print "class Person is defined"
+    print("class Person is defined")
 
     def set_name(self, name):
         self.name = name
@@ -11,7 +11,7 @@ class Person:
         return self.name
 
     def greet(self):
-        print ("Hello world", self.name)
+        print("Hello world", self.name)
 
 
 foo = Person()

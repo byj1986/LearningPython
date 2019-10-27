@@ -1,4 +1,4 @@
-print "factorial"
+print("factorial")
 
 
 def factorial(n):
@@ -8,7 +8,7 @@ def factorial(n):
     return result
 
 
-print factorial(5)
+print(factorial(5))
 
 
 def factorial_recursive(n):
@@ -18,9 +18,9 @@ def factorial_recursive(n):
         return factorial_recursive(n - 1) * n
 
 
-print factorial_recursive(5)
+print(factorial_recursive(5))
 
-print "power"
+print("power")
 
 
 def power(x, n):
@@ -30,7 +30,7 @@ def power(x, n):
     return result
 
 
-print "power", 3, 5, power(3, 5)
+print("power", 3, 5, power(3, 5))
 
 
 def power_recursive(x, n):
@@ -40,7 +40,7 @@ def power_recursive(x, n):
         return x * power(x, n - 1)
 
 
-print "power", 3, 5, power_recursive(3, 5)
+print("power", 3, 5, power_recursive(3, 5))
 
 
 def func(x):
@@ -49,6 +49,6 @@ def func(x):
 
 seq = ["foo", "x41", "?!", "****"]
 
-print filter(func, seq)
+print(filter(func, seq))
 
 "x41".isalnum()

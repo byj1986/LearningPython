@@ -14,10 +14,10 @@ r = Rectangle()
 
 r.width = 100
 r.height = 150
-print r.getSize()
+print(r.getSize())
 
 r.setSize((10, 20))
-print r.width, r.height
+print(r.width, r.height)
 
 
 class Rectangle2(object):
@@ -35,14 +35,14 @@ class Rectangle2(object):
     readableSize = property(getSize)
 
 
-print 'Rectangle2'
+print('Rectangle2')
 r2 = Rectangle2()
 r2.width = 20
 r2.height = 30
-print r2.size
+print(r2.size)
 r2.size = 150, 100
-print r2.width, r2.height
-print r2.readableSize
+print(r2.width, r2.height)
+print(r2.readableSize)
 
 
 # unable to set value
@@ -54,26 +54,26 @@ class Rectangle3(object):
         self.height = 0
 
     def __setattr__(self, key, value):
-        print '__setattr__', key, value
+        print('__setattr__', key, value)
         if key == 'size':
             self.width, self.height = value
         else:
             self.__dict__[key] = value
 
     def __getattr__(self, item):
-        print '__getattr__', item
+        print('__getattr__', item)
         if item == 'size':
             return self.width, self.height
         else:
             raise AttributeError
 
 
-print 'Rectangle3'
+print('Rectangle3')
 rect3 = Rectangle3()
 rect3.width = 20
 rect3.height = 30
 
-print rect3.width
-print rect3.size
-print rect3.height
-print rect3.aa
+print(rect3.width)
+print(rect3.size)
+print(rect3.height)
+print(rect3.aa)

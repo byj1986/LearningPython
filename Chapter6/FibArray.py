@@ -4,15 +4,15 @@ fibs = [0, 1]
 for i in range(8):
     fibs.append(fibs[-2] + fibs[-1])
 
-print fibs
+print(fibs)
 
-print callable(fibs)
+print(callable(fibs))
 
-print callable(math.sqrt)
+print(callable(math.sqrt))
 
 
 def hello(name):
-    print "Hello", name
+    print("Hello", name)
 
 
 hello("bao")
@@ -25,7 +25,7 @@ def fibs(nums):
     return result
 
 
-print fibs(10)
+print(fibs(10))
 
 
 def square(num):
@@ -33,5 +33,5 @@ def square(num):
     return num * num
 
 
-# print square(10)
-print square.__doc__
+# print(square(10))
+print(square.__doc__)

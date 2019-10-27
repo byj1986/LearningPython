@@ -2,14 +2,14 @@ x = 1
 
 scope = vars()
 
-print scope['x']
+print(scope['x'])
 
 scope['x'] += 1
 
-print scope['x']
-print scope['x']
+print(scope['x'])
+print(scope['x'])
 
-print x
+print(x)
 
 
 def change_global():
@@ -19,4 +19,4 @@ def change_global():
 
 change_global()
 
-print x
+print(x)

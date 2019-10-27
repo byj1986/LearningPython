@@ -10,7 +10,7 @@ def handle_exception():
     try:
         faulty()
     except:
-        print 'Error handled'
+        print('Error handled')
 
 
 handle_exception()
