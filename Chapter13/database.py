@@ -8,9 +8,9 @@ curs = conn.cursor()
 # conn.commit()
 curs.execute("SELECT Name, Age FROM Person")
 for row in curs.fetchall():
-    print row
-# print res
+    print(row)
+# print(res)
 # names = [f[0] for f in curs.description]
-# print names
+# print(names)
 conn.commit()
 conn.close()

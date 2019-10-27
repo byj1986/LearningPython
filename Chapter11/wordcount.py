@@ -6,4 +6,4 @@
 text = 'hello, world!\nYour mother was a hamster and your father smelled of elderberries.'
 words = text.split()
 wordcount = len(words)
-print 'WordCount: ', wordcount
+print('WordCount: ', wordcount)
