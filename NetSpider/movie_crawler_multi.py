@@ -2,12 +2,15 @@
 # 主要目的是从http://www.zhuixinfan.com/main.php
 # 这个网页抓取一系列的ed2k或者是磁力链接
 # 免去每一集都要手动点开网页复制这样的循环操作
+# multi可以同时打开N个网页
+
 
 import os
 import re
 import win32con
 import win32clipboard as w
 
+import time
 import lxml.html
 import requests
 from bs4 import BeautifulSoup
@@ -23,7 +26,7 @@ WebLoadedParam = "nv_main"
 
 # Step1: 找到table
 
-browser = webdriver.Chrome()
+browser = webdriver.Firefox()
 # 浏览器
 wait = WebDriverWait(browser, 1000)
 # 窗体大小1920, 1080
@@ -55,30 +58,43 @@ def getDownloadUrl(soup: BeautifulSoup):
     return downloadUrl
 
 
-def getEpisodeUrl(soup: BeautifulSoup):
-    resourcesUrl = []
+def getEpisodeUrls(soup: BeautifulSoup):
+    resourceUrls = []
     tds = soup.find_all('td')
     for td in tds:
         href = td.a and td.a["href"]
         if validateHref(href):
-            resourcesUrl.append(href)
-    return resourcesUrl
+            resourceUrls.append(MovieHostUrl+href)
+    return resourceUrls
 
 
 if __name__ == "__main__":
     html = getResponse(InitialMovieUrl, WebLoadedParam)
     soup = BeautifulSoup(html, features="lxml")
-    resourcesUrl = getEpisodeUrl(soup)
-    w.OpenClipboard()
+    resourceUrls = getEpisodeUrls(soup)
     clipBoardText = ""
-    for resource in resourcesUrl:
-        resourceUrl = MovieHostUrl+resource
-        resourceHtml = getResponse(resourceUrl, WebLoadedParam)
-        resourceSoup = BeautifulSoup(resourceHtml, features="lxml")
+    for resource in resourceUrls:
+        js = 'window.open("%s")' % resource
+        browser.execute_script(js)
+    wait.until(ec.number_of_windows_to_be(len(resourceUrls)+1))
+    for handle in browser.window_handles:
+        browser.switch_to.window(handle)
+        wait.until(ec.presence_of_element_located((By.ID, WebLoadedParam)))
+        resourceSoup = BeautifulSoup(browser.page_source, features="lxml")
         downloadUrl = getDownloadUrl(resourceSoup)
         if downloadUrl:
             clipBoardText += downloadUrl+"\n"
     print(clipBoardText)
-    w.SetClipboardData(win32con.CF_UNICODETEXT, clipBoardText)
+
+    # w.OpenClipboard()
+    # clipBoardText = ""
+    # for resource in resourceUrls:
+    #     resourceUrl = MovieHostUrl+resource
+
+    #     resourceHtml = getResponse(resourceUrl, WebLoadedParam)
+    #     resourceSoup = BeautifulSoup(resourceHtml, features="lxml")
+    #     downloadUrl = getDownloadUrl(resourceSoup)
+    #     clipBoardText += downloadUrl+"\n"
+    # w.SetClipboardData(win32con.CF_UNICODETEXT, clipBoardText)
     # w.EmptyClipboard()
-    w.CloseClipboard()
+    # w.CloseClipboard()
