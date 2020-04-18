@@ -7,8 +7,8 @@
 
 import os
 import re
-import win32con
-import win32clipboard as w
+import win32
+import win32.win32clipboard as w
 
 import time
 import lxml.html
@@ -21,7 +21,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 
 MovieHostUrl = "http://www.zhuixinfan.com/"
-InitialMovieUrl = "http://www.zhuixinfan.com/viewtvplay-1119.html"
+InitialMovieUrl = "http://www.zhuixinfan.com/viewtvplay-921.html"
 WebLoadedParam = "nv_main"
 
 # Step1: 找到table
@@ -73,6 +73,7 @@ if __name__ == "__main__":
     soup = BeautifulSoup(html, features="lxml")
     resourceUrls = getEpisodeUrls(soup)
     clipBoardText = ""
+    w.OpenClipboard()
     for resource in resourceUrls:
         js = 'window.open("%s")' % resource
         browser.execute_script(js)
@@ -85,7 +86,8 @@ if __name__ == "__main__":
         if downloadUrl:
             clipBoardText += downloadUrl+"\n"
     print(clipBoardText)
-
+    w.SetClipboardData(w.CF_UNICODETEXT, clipBoardText)
+    
     # w.OpenClipboard()
     # clipBoardText = ""
     # for resource in resourceUrls:
