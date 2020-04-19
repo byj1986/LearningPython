@@ -9,7 +9,6 @@ import os
 import re
 import win32
 import win32.win32clipboard as w
-import lxml.html
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.by import By
