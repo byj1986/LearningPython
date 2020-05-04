@@ -7,8 +7,7 @@
 
 import os
 import re
-import win32
-import win32.win32clipboard as w
+import win32clipboard as w
 import lxml.html
 from bs4 import BeautifulSoup
 from selenium import webdriver
@@ -84,7 +83,6 @@ if __name__ == "__main__":
             clipBoardText += downloadUrl+"\n"
     print(clipBoardText)
     w.SetClipboardData(w.CF_UNICODETEXT, clipBoardText)
-
     # w.OpenClipboard()
     # clipBoardText = ""
     # for resource in resourceUrls:
