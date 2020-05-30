@@ -6,6 +6,7 @@
 import re
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.ui import WebDriverWait
@@ -21,6 +22,8 @@ CommentsAttributes = {
 
 VoteAttributes = {'class': 'Button VoteButton VoteButton--up'}
 
+CloseLoginPopupButton = {'class': 'Button Modal-closeButton Button--plain'}
+
 # 作者 AuthorInfo-head
 
 browser = webdriver.Firefox()
@@ -30,7 +33,7 @@ wait = WebDriverWait(browser, 1000)
 browser.set_window_size(1920, 1080)
 
 
-def getResponse(url, param):
+def getResponse(url: str, param, times: int = 3):
     """
     请求url, 根据返回的html解析为一个doc
     :param url: 请求的url
@@ -38,9 +41,28 @@ def getResponse(url, param):
     :return: a single element/document
     """
     browser.get(url)
-    wait.until(ec.presence_of_element_located((By.ID, param)))
+    target = wait.until(ec.presence_of_element_located((By.ID, param)))
+    if times > 0:
+        scrollToEnd(target, times)
     html = browser.page_source
     return html
+
+
+def scrollToEnd(target, times=3):
+    """
+    """
+    for i in range(times):
+        try:
+            browser.execute_script("window.scrollBy(0, 1000)")
+
+            html = browser.page_source
+            # close login popup if shown
+
+            # browser.execute_script('arguments[0].scrollIntoView(true);', target)
+            # target.location_once_scrolled_into_view
+        except TimeoutException:
+            pass
+    return
 
 
 def getAnswers(soup: BeautifulSoup):
@@ -69,14 +91,15 @@ def getVotes(soup: BeautifulSoup):
 
 
 if __name__ == "__main__":
-    htmlText = getResponse(ZhihuQuestionUrl, WebLoadedParam)
+    htmlText = getResponse(ZhihuQuestionUrl, WebLoadedParam, 0)
+
     soup = BeautifulSoup(htmlText, features="lxml")
     # getComments(soup)
-    # getVotes(soup)
+    getVotes(soup)
     # answers = getAnswers(soup)
     # for answer in answers:
     #     getVotes(answer)
-    # TODO browser要滚动到底部，直到没有新的回答
-    
-    print('hello world')
+    # TODO browser 要滚动到底部，直到没有新的回答
+
+    # print('hello world')
     # print(htmlText)
