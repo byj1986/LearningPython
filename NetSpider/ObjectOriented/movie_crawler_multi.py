@@ -32,8 +32,6 @@ class movie_crawler_multi(movie_crawler):
 if __name__ == "__main__":
     movie_crawler_multi = movie_crawler_multi()
     movie_crawler.MovieUrl = "viewtvplay-1119.html"
-    movie_crawler.HostUrl = "http://www.zhuixinfan.com/"
-    movie_crawler.until = ec.presence_of_element_located((By.ID, "nv_main"))
     movieUrls = movie_crawler_multi.getDownloadUrls()
     for movie in movieUrls:
         print(movie)

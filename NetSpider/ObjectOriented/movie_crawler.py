@@ -6,16 +6,12 @@ from selenium.webdriver.support import expected_conditions as ec
 
 class movie_crawler(crawler_base):
     # until = None
-    WebLoadedParam = None
+    until = ec.presence_of_element_located((By.CLASS_NAME, "top-list-data"))
+    HostUrl = "http://www.zhuixinfan.com/"
     MovieUrl = None
-    HostUrl = None
 
     def __init__(self):
         crawler_base.__init__(self)
-        # super(crawler_base, self).__init__()
-        # self.WebLoadedParam =
-        # self.HostUrl = "http://www.zhuixinfan.com/"
-        # self.until = wait.until(ec.presence_of_element_located((By.ID, param)))
 
     def validateHref(self, href: str) -> bool:
         return href and "main.php?" in href
@@ -35,7 +31,7 @@ class movie_crawler(crawler_base):
         resourcesUrl = self.getEpisodesUrl(soup)
         for resource in resourcesUrl:
             resourceUrl = self.HostUrl+resource
-            resourceSoup = self.getResponse(resourceUrl, self.WebLoadedParam)
+            resourceSoup = self.getResponse(resourceUrl)
             downloadUrl = self.getDownloadUrl(resourceSoup)
             if downloadUrl:
                 downloadUrls.append(downloadUrl)
@@ -52,8 +48,6 @@ class movie_crawler(crawler_base):
 if __name__ == "__main__":
     movie_crawler = movie_crawler()
     movie_crawler.MovieUrl = "viewtvplay-1119.html"
-    movie_crawler.HostUrl = "http://www.zhuixinfan.com/"
-    movie_crawler.until = ec.presence_of_element_located((By.ID, "nv_main"))
     movieUrls = movie_crawler.getDownloadUrls()
     for movie in movieUrls:
         print(movie)

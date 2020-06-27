@@ -10,22 +10,25 @@ from selenium.webdriver.support.ui import WebDriverWait
 
 class crawler_base:
     until = None
+    browser = None
+    wait = None
+
     # WebLoadedParam = None
     # InitialUrl = None
 
     def __init__(self):
         self.browser = webdriver.Firefox()
-        # 浏览器
-        self.wait = WebDriverWait(self.browser, 1000)
         # 窗体大小1920, 1080
         self.browser.set_window_size(1920, 1080)
+        # 浏览器
+        self.wait = WebDriverWait(self.browser, 1000)
 
     def getResponse(self, url: str, times: int = 3) -> BeautifulSoup:
         """
         """
         self.browser.get(url)
 
-        # target = self.wait.until(self.until)
+        self.wait.until(self.until)
         # if times > 0:
         #     self.scrollToEnd(target, times)
         html = self.browser.page_source
