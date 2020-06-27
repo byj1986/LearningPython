@@ -11,7 +11,7 @@ class movie_crawler_multi(movie_crawler):
         movie_crawler.__init__(self)
 
     def getDownloadUrls(self) -> []:
-        soup = self.getResponse(self.HostUrl+self.MovieUrl)
+        soup = self.getResponse(self.HostUrl+self.MovieUrl, self.until)
         downloadUrls = []
         resourcesUrl = self.getEpisodesUrl(soup)
         for resource in resourcesUrl:

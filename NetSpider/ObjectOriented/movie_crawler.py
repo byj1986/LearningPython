@@ -26,12 +26,12 @@ class movie_crawler(crawler_base):
         return resourcesUrl
 
     def getDownloadUrls(self) -> []:
-        soup = self.getResponse(self.HostUrl+self.MovieUrl)
+        soup = self.getResponse(self.HostUrl+self.MovieUrl, self.until)
         downloadUrls = []
         resourcesUrl = self.getEpisodesUrl(soup)
         for resource in resourcesUrl:
             resourceUrl = self.HostUrl+resource
-            resourceSoup = self.getResponse(resourceUrl)
+            resourceSoup = self.getResponse(resourceUrl, self.until)
             downloadUrl = self.getDownloadUrl(resourceSoup)
             if downloadUrl:
                 downloadUrls.append(downloadUrl)
