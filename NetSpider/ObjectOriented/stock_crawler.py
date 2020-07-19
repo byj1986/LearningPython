@@ -1,14 +1,11 @@
 # coding=utf-8
 
-
+import json
 from bs4 import BeautifulSoup
 from crawler_base import crawler_base
 from datetime import date, datetime
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
-
-stocks = [{'id': "600900", 'name': "长江电力"},
-          {'id': "300750", 'name': "宁德时代"}]
 
 
 class stock_crawler(crawler_base):
@@ -61,7 +58,11 @@ class stock_crawler(crawler_base):
 
 
 if __name__ == "__main__":
-    sc = stock_crawler()
-    for stock in stocks:
-        overall = sc.getOverall(stock)
-        print(overall)
+    stockJson = r'C:\Users\byj19\Desktop\stocks.json'
+    with open(stockJson, 'r', encoding='utf-8') as stockFile:
+        stocks = json.load(stockFile)
+        sc = stock_crawler()
+        for stock in stocks:
+            overall = sc.getOverall(stock)
+            print(overall)
+    print('done')
