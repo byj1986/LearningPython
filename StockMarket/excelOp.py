@@ -5,7 +5,7 @@ import openpyxl
 from stockData import getCYWDailyData
 from datetime import date, datetime, timedelta
 
-xlsFile = r'C:\Users\byj19\Desktop\股票主力成本1.xlsx'
+xlsFile = r'股票主力成本1.xlsx'
 stockJson = r'C:\Users\byj19\Desktop\stocks.json'
 
 
