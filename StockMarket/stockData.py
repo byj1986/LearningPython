@@ -7,8 +7,9 @@ import requests
 StockDataHost = 'http://data.eastmoney.com/stockcomment/API'
 
 
-def getStockDataUrl(stockId: str):
-    return StockDataHost + '/' + stockId+'.json'
+def getStockDataUrl(stockId: any):
+    return StockDataHost + '/' + str(stockId) + '.json'
+    # return """{StockDataUrl}/{StockId}.json""".format(StockDataUrl=StockDataHost, StockId=stockId)
 
 
 def getCYWDailyData(stockId: str):
