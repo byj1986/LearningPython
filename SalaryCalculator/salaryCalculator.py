@@ -1,11 +1,7 @@
 # coding=utf-8
 
 
-from House import *
-from Unemployment import *
-from Pension import *
-from Medical import *
-from Tax import *
+from SubItems import House, Medical, Tax, Pension, Unemployment, consts
 
 
 def calculate(gross: float, exempt=0) -> []:
@@ -15,15 +11,15 @@ def calculate(gross: float, exempt=0) -> []:
     :param exempt: tax exempt
     :return: calculate result set
     """
-    if gross < MinimumSalary:
+    if gross < consts.MinimumSalary:
         raise ValueError('Gross salary is less local minimum salary!')
-    _pension = pension(gross)
-    _unemployment = unemployment(gross)
-    _medical = medical(gross)
-    _house = house(gross)
+    _pension = Pension.pension(gross)
+    _unemployment = Unemployment.unemployment(gross)
+    _medical = Medical.medical(gross)
+    _house = House.house(gross)
     _payTax = round(gross - _pension - _unemployment - _medical - _house, 2)
-    tax_after_deduction = tax(_payTax, exempt)
-    tax_before_deduction = tax(_payTax)
+    tax_after_deduction = Tax.tax(_payTax, exempt)
+    tax_before_deduction = Tax.tax(_payTax)
     _deduction_save = round(tax_before_deduction - tax_after_deduction, 2)
     net_salary = round(_payTax - tax_after_deduction, 2)
     return [_pension, _unemployment, _medical, _house, _deduction_save, net_salary]

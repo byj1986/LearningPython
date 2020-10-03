@@ -1,5 +1,5 @@
 # coding=utf-8
-from consts import *
+from .consts import *
 
 
 def house(salary) -> float:

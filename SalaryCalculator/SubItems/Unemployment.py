@@ -1,4 +1,4 @@
-from consts import *
+from .consts import *
 
 
 def unemployment(salary) -> float:

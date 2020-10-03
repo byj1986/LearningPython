@@ -1,4 +1,4 @@
-from consts import *
+from .consts import *
 
 
 def tax(after_decution_salary: float, exempt=0) -> float:
