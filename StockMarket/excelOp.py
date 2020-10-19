@@ -5,8 +5,8 @@ import openpyxl
 from stockData import getCYWDailyData
 from datetime import date, datetime, timedelta
 
-xlsFile = r'D:\Projects\Python\LearningPython\StockMarket\股票主力成本.xlsx'
-stockJson = r'D:\Projects\Python\LearningPython\StockMarket\stocks.json'
+xlsFile = './StockMarket/股票主力成本.xlsx'
+stockJson = './StockMarket/stocks.json'
 
 
 def getCWY(data, dayType: str) -> float:

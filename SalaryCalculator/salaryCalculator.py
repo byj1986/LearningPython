@@ -21,23 +21,25 @@ def calculate(gross: float, exempt=0) -> []:
     tax_after_deduction = Tax.tax(_payTax, exempt)
     tax_before_deduction = Tax.tax(_payTax)
     _deduction_save = round(tax_before_deduction - tax_after_deduction, 2)
-    net_salary = round(_payTax - tax_after_deduction, 2)
-    return [_pension, _unemployment, _medical, _house, _deduction_save, net_salary]
+    _net_salary = round(_payTax - tax_after_deduction, 2)
+    return [_pension, _unemployment, _medical, _house, _deduction_save, _net_salary]
 
 
 if __name__ == '__main__':
-    grossSalaries = [2000, 5000, 8000, 10000, 15000, 20000, 25000, 30000, 50000, 80000, 100000]
+    grossSalaries = [2000, 5000, 8000, 10000, 15000,
+                     20000, 25000, 30000, 50000, 80000, 100000]
     for salary in grossSalaries:
         try:
-            result = calculate(salary, 2000)
+            pension, unemployment, medical, house, deduction_save, net_salary = calculate(
+                salary, 2000)
             print("-------------------------")
-            print("Gross salary: " + str(salary))
-            print("Pension:      " + str(result[0]))
-            print("Unemployment: " + str(result[1]))
-            print("Medical:      " + str(result[2]))
-            print("House:        " + str(result[3]))
-            print("Tax exempt:   " + str(result[4]))
-            print("Net salary:   " + str(result[5]))
+            print(f"Gross salary: {salary}")
+            print(f"Pension:      {pension}")
+            print(f"Unemployment: {unemployment}")
+            print(f"Medical:      {medical}")
+            print(f"House:        {house}")
+            print(f"Tax exempt:   {deduction_save}")
+            print(f"Net salary:   {net_salary}")
             print("-------------------------")
         except ValueError as e:
             print(e)
