@@ -1,0 +1,14 @@
+1: C 
+2: A
+3: A
+4: D A
+5: D
+6: A
+7: D C
+8: D
+9: A
+10: C
+
+Correct answer:
+CAAAD
+ACDAC
