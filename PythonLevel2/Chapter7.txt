@@ -1,0 +1,14 @@
+1: B
+2: A
+3: A C
+4: C
+5: C
+6: C
+7: C
+8: C
+9: A D
+10: B
+
+Correct answer:
+BACCC
+CCCDC
